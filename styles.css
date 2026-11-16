@@ -403,7 +403,7 @@ img {
   font-size: 0.9rem;
 }
 
-.contact-form input, .contact-form textarea {
+.contact-form input, .contact-form select, .contact-form textarea {
   padding: 0.75rem;
   border: 1px solid var(--border-color);
   border-radius: 8px;
@@ -685,6 +685,12 @@ img { max-width: 100%; }
   color: var(--warm-white);
   font-weight: 800;
 }
+.home-example-card > span { padding-bottom: .35rem; }
+.home-example-description {
+  margin: 0;
+  padding: 0 1.15rem 1.15rem;
+  font-size: .9rem;
+}
 .home-example-card:hover, .case-card:hover, .value-card:hover {
   border-color: #536b7a;
 }
@@ -744,17 +750,20 @@ main > section h2, main > section h3 { color: var(--warm-white); }
 .booking-widget h2, .booking-widget h3 { color: var(--warm-white); }
 .booking-widget p, .booking-widget label, .contact-detail { color: var(--body-copy); }
 .booking-widget a:not(.btn) { color: #ff8058; }
-.contact-form input, .contact-form textarea {
+.contact-form input, .contact-form select, .contact-form textarea {
   background: #0b1d2b;
   color: var(--warm-white);
   border: 1px solid var(--navy-border);
   border-radius: 4px;
   font: 400 1rem/1.5 var(--font-family);
 }
-.contact-form input:focus, .contact-form textarea:focus {
+.contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus {
   outline: 2px solid var(--orange);
   outline-offset: 1px;
 }
+.contact-form select { margin-bottom: 1rem; }
+.contact-form-note { margin: .5rem 0 0; font-size: .85rem; }
+.contact-form-note:empty { margin: 0; }
 .site-footer {
   background: #06131d;
   color: #d7e0e6;
@@ -763,6 +772,7 @@ main > section h2, main > section h3 { color: var(--warm-white); }
 }
 .footer-inner { gap: 1rem; }
 .footer-inner p { color: #d7e0e6; }
+.footer-inner a { color: inherit; text-decoration: underline; }
 
 /* Navigation CTA hidden so the homepage has one primary action */
 .nav-cta { display: none !important; }
