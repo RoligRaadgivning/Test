@@ -865,3 +865,91 @@ input, textarea, select { background: #0b1120; color: var(--warm-white); border-
   .method-grid { grid-template-columns: 1fr; }
   .value-card, .testimonial-card { padding: 1.25rem; }
 }
+
+/* Contact choices */
+.contact-choices {
+  max-width: 46rem;
+  margin-inline: auto;
+}
+
+.contact-switch {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: .25rem;
+  padding: .25rem;
+  border: 1px solid var(--navy-border);
+  border-radius: 2rem;
+  margin-bottom: 1.25rem;
+}
+
+.contact-switch a:not(.btn) {
+  display: grid;
+  place-items: center;
+  min-height: 44px;
+  padding: .5rem .65rem;
+  text-align: center;
+  color: var(--warm-white);
+  border-radius: 2rem;
+  font-size: .9rem;
+  font-weight: 800;
+}
+
+.contact-switch a[aria-current="true"]:not(.btn) {
+  background: var(--orange);
+  color: #0b1120;
+}
+
+.contact-panel {
+  padding: clamp(1rem, 4vw, 2rem);
+  border: 1px solid var(--navy-border);
+  border-radius: 4px 16px 4px 16px;
+  scroll-margin-top: 6rem;
+}
+
+.contact-panel[hidden],
+.contact-form [hidden] {
+  display: none;
+}
+
+.contact-panel:not([hidden]) + .contact-panel:not([hidden]) {
+  margin-top: 1rem;
+}
+
+.contact-panel h3 + p {
+  margin: .45rem 0 1.25rem;
+}
+
+.contact-form-grid > label {
+  min-width: 0;
+}
+
+.contact-form input, .contact-form select, .contact-form textarea {
+  min-width: 0;
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+.contact-form button {
+  margin-top: 1rem;
+}
+
+.contact-form button:disabled {
+  opacity: .7;
+  cursor: wait;
+}
+
+.contact-calendar {
+  text-align: center;
+}
+
+.contact-choices .contact-detail {
+  margin-top: 1rem;
+}
+
+@media (max-width: 600px) {
+  .contact-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
