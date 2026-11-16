@@ -42,32 +42,45 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('hashchange', () => showContactPanel(window.location.hash));
     showContactPanel(window.location.hash);
 
-  }
+    const form = contactChoices.querySelector('.contact-form');
+    const submit = form.querySelector('button[type="submit"]');
+    const status = form.querySelector('[role="status"]');
 
-  const contactForm = document.querySelector('#kontaktformular .contact-form');
-
-  if (contactForm) {
-    const submitButton = contactForm.querySelector('button[type="submit"]');
-    const status = contactForm.querySelector('[role="status"]');
-
-    contactForm.addEventListener('submit', (event) => {
+    if (form.getAttribute('method') === 'post') form.addEventListener('submit', async (event) => {
       event.preventDefault();
+      if (submit.disabled) return;
 
-      const fields = new FormData(contactForm);
-      const subject = fields.get('topic');
-      const body = [
-        `Navn: ${fields.get('name').trim()}`,
-        `E-mail: ${fields.get('email').trim()}`,
-        '',
-        fields.get('message').trim().replace(/\r\n|\r|\n/g, '\r\n'),
-      ].join('\r\n');
-      const mailto = `mailto:roliggaard@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const fields = new FormData(form);
+      const endpoint = new URL(form.action);
+      endpoint.pathname = '/ajax' + endpoint.pathname;
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 12000);
 
-      status.textContent = 'Tak for din besked. Send den fra dit mailprogram, når det åbner. Du kan også skrive direkte til roliggaard@gmail.com.';
-      window.location.href = mailto;
+      submit.disabled = true;
+      status.textContent = 'Sender din forespørgsel …';
+
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: fields,
+          signal: controller.signal,
+        });
+        const result = await response.json();
+
+        if (!response.ok || (result.success !== true && result.success !== 'true')) {
+          throw new Error('Form submission failed');
+        }
+
+        form.reset();
+        status.textContent = 'Tak for din forespørgsel. Jeg vender tilbage på din e-mail.';
+      } catch {
+        status.textContent = 'Jeg kunne ikke bekræfte afsendelsen. Du kan prøve igen eller skrive til roliggaard@gmail.com.';
+      } finally {
+        clearTimeout(timeout);
+        submit.disabled = false;
+      }
     });
-
-    submitButton.disabled = false;
   }
 
   // Testimonial Carousel
