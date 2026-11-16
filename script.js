@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         form.reset();
-        status.textContent = 'Tak for din forespørgsel. Jeg vender tilbage på din e-mail.';
+        status.textContent = 'Tusinde tak for din besked - det sætter jeg stor pris på. Jeg vender tilbage hurtigst muligt 🙏';
       } catch {
         status.textContent = 'Jeg kunne ikke bekræfte afsendelsen. Du kan prøve igen eller skrive til roliggaard@gmail.com.';
       } finally {
