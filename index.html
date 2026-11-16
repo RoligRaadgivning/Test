@@ -17,7 +17,7 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="627">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="styles.css?v=13.0">
+  <link rel="stylesheet" href="styles.css?v=13.1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -248,16 +248,15 @@
           <p>Ingen salgstaler, bare en god, ærlig snak om det, du står med. Lad os se, om jeg er den rette til at tænke med.</p>
         </div>
 
-        <div class="booking-widget" id="booking-calendar">
-          <div class="booking-widget-heading">
-            <h2>Lad os finde et tidspunkt</h2>
-            <p>30 minutter på Google Meet. Helt uforpligtende.</p>
-          </div>
-          <div class="booking-panel">
-            <div class="booking-frame-window"><iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ35mEbGiesAEXLH7DN4RPwk8IxYnJVUGaKLK5U5f87mrVrdr9maRscMo-LD0ivQM_WXs5zu7FGB?gv=true" title="Vælg en ledig tid til en samtale med Chris Roliggaard" width="100%" height="650" frameborder="0" loading="lazy"></iframe></div>
-          </div>
-          <div class="form-container" id="kontaktformular" style="margin-top:2rem;">
-            <h3>Send en besked direkte</h3>
+        <div class="booking-widget contact-choices">
+          <nav class="contact-switch" aria-label="Kontaktmuligheder">
+            <a href="#kontaktformular">Send en forespørgsel</a>
+            <a href="#booking-calendar">Book en tid</a>
+          </nav>
+
+          <div class="contact-panel" id="kontaktformular">
+            <h3>Send en forespørgsel</h3>
+            <p>Fortæl kort, hvad du gerne vil have hjælp til.</p>
             <form class="contact-form" aria-describedby="kontakt-privatliv">
               <div class="contact-form-grid"><label>Dit navn<input type="text" name="name" required></label><label>Din e-mail<input type="email" name="email" required></label></div>
               <label>Hvad handler din henvendelse om?
@@ -275,6 +274,13 @@
               <p class="contact-form-note" role="status"></p>
               <noscript><p>Skriv direkte til <a href="mailto:roliggaard@gmail.com">roliggaard@gmail.com</a>.</p></noscript>
             </form>
+          </div>
+
+          <div class="contact-panel contact-calendar" id="booking-calendar">
+            <h3>En samtale på 30 minutter</h3>
+            <p>Vælg en tid, der passer dig. Vi mødes på Google Meet og taler om det, du står med.</p>
+            <a class="btn btn-primary" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ35mEbGiesAEXLH7DN4RPwk8IxYnJVUGaKLK5U5f87mrVrdr9maRscMo-LD0ivQM_WXs5zu7FGB" target="_blank" rel="noopener noreferrer">Åbn min kalender <span aria-hidden="true">↗</span></a>
+            <p class="contact-form-note">Kalenderen åbner i en ny fane hos Google.</p>
           </div>
           <p class="contact-detail">E-mail: <a href="mailto:roliggaard@gmail.com">roliggaard@gmail.com</a> · <a href="https://www.linkedin.com/in/chrisroliggaard/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
         </div>
@@ -294,6 +300,6 @@
       </div>
     </div>
   </footer>
-  <script src="script.js?v=13.0"></script>
+  <script src="script.js?v=13.1"></script>
 </body>
 </html>
