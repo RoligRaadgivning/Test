@@ -11,6 +11,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  const contactForm = document.querySelector('#kontaktformular .contact-form');
+
+  if (contactForm) {
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    const status = contactForm.querySelector('[role="status"]');
+
+    contactForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const fields = new FormData(contactForm);
+      const subject = fields.get('topic');
+      const body = [
+        `Navn: ${fields.get('name').trim()}`,
+        `E-mail: ${fields.get('email').trim()}`,
+        '',
+        fields.get('message').trim().replace(/\r\n|\r|\n/g, '\r\n'),
+      ].join('\r\n');
+      const mailto = `mailto:roliggaard@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+      status.textContent = 'Tak for din besked. Send den fra dit mailprogram, når det åbner. Du kan også skrive direkte til roliggaard@gmail.com.';
+      window.location.href = mailto;
+    });
+
+    submitButton.disabled = false;
+  }
+
   // Testimonial Carousel
   const slides = document.querySelectorAll('[data-carousel-slide]');
   const dots = document.querySelectorAll('[data-carousel-dot]');
